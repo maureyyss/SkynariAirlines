@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Skynari Airlines</title>
+  <link rel="icon" href="/images/profile.jpg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/background2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, rgba(0, 32, 91, 0.5), rgba(255, 255, 255, 0.3));
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(0, 32, 91, 0.95);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      position: relative;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .about-section {
+      max-width: 1000px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.486);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-section h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #00215e;
+      border-left: 6px solid #0059ff;
+      padding-left: 15px;
+    }
+
+    .about-section p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      color: #000000;
+    }
+
+     footer {
+      text-align: center;
+      padding: 20px;
+      background: #00205b;
+      color: white;
+      margin-top: 30px;
+  }
+
+    @media (max-width: 768px) {
+      .about-section {
+        margin: 40px 20px;
+        padding: 30px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/images/profile.jpg" alt="Skynari Logo">
+       Skynari Airlines
+    </div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/flights">Flights</a>
+      <a href="/about" class="active">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+  
+  <article>
+  <section class="about-section">
+    <h1>About Us</h1>
+    <p>
+      At Skynari Airlines, we believe that every journey should be as extraordinary as the destination. Founded with a passion for innovation and customer care, 
+      we are committed to redefining air travel with world-class service, safety, and comfort. Whether you're flying for business or leisure, 
+      our modern fleet and dedicated crew ensure a seamless and enjoyable experience from takeoff to landing. With a growing network of destinations and 
+      a focus on sustainability and excellence, Skynari Airlines is your trusted partner in the sky—where your journey begins with us.
+    </p>
+
+    <h1>Our History</h1>
+    <p>
+      Skynari Airlines: A Journey from Setbacks to Soaring Success
+
+Skynari Airlines was founded in 2010 with a bold vision: to create an airline that placed people at the heart of air travel. However, despite our clear mission, we faced significant challenges in our early years. Limited funding,
+lack of infrastructure, and intense competition from established carriers kept us grounded, with operations restricted to a few regional routes and just a single aircraft.
+But we never gave up on our dream. With unwavering determination, strategic planning, and a commitment to excellence, we laid the groundwork for something greater.
+By 2015, we had gained the stability, experience, and resources to expand internationally—offering flights to major global destinations while staying true to our hallmark hospitality and reliability.
+From that point on, we continuously invested in cutting-edge technology, sustainable aviation practices, and employee development, ensuring that every flight reflected our core values: safety, innovation, and service.
+Today, in 2025, fifteen years since our founding, our vision has become a reality. Skynari Airlines now connects millions of passengers across continents and continues to raise the standard for modern air travel—proving that with perseverance and purpose, even the most ambitious dreams can take flight.
+    </p>
+  </section>
+  </article>
+
+  <footer>
+    &copy; Skynari Airlines. All rights reserved.
+  </footer>
+
+</body>
+</html>

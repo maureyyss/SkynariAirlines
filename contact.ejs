@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Skynari Airlines</title>
+  <link rel="icon" href="/images/profile.jpg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: black;
+      background: linear-gradient(135deg, #a8d0ff 0%, #ffffff 70%);
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: -100px;
+      width: 120vw;
+      height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255 255 255 / 0.15) 40px, transparent 70px),
+        radial-gradient(circle at 50% 10%, rgba(255 255 255 / 0.1) 60px, transparent 100px),
+        radial-gradient(circle at 80% 30%, rgba(255 255 255 / 0.12) 50px, transparent 90px),
+        radial-gradient(circle at 30% 60%, rgba(255 255 255 / 0.08) 70px, transparent 110px),
+        radial-gradient(circle at 75% 80%, rgba(255 255 255 / 0.1) 45px, transparent 85px);
+      animation: floatClouds 40s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes floatClouds {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+      50% {
+        transform: translateX(30px) translateY(10px);
+      }
+      100% {
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    header {
+      background: #00205b;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 600;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: white;
+      border-bottom: 2px solid white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto 80px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #00205b;
+      margin-bottom: 30px;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .contact-info {
+      flex: 1 1 300px;
+      max-width: 350px;
+      background: #f1f8ff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      color: #00205b;
+    }
+
+    .contact-info h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .contact-info p {
+      line-height: 1.6;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .contact-info a {
+      color: #00205b;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      font-size: 24px;
+      color: #00205b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffcc00;
+    }
+
+    .contact-form {
+      flex: 1 1 400px;
+      max-width: 500px;
+      background: #f9fafc;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      color: #00205b;
+    }
+
+    .contact-form h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form label {
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      background: #00205b;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #ffcc00;
+      color: #00205b;
+    }
+
+    .message-success {
+      background-color: #d1e7dd;
+      color: #0f5132;
+      border: 1px solid #badbcc;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .message-error {
+      background-color: #f8d7da;
+      color: #842029;
+      border: 1px solid #f5c2c7;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+     footer {
+      text-align: center;
+      padding: 20px;
+      background: #00205b;
+      color: white;
+     margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 720px) {
+      .contact-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-info, .contact-form {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/images/profile.jpg" alt="Skynari Logo">
+      Skynari Airlines
+    </div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/flights">Flights</a>
+      <a href="/about">About</a>
+      <a href="/contacts" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact Us</h1>
+    <div class="contact-container">
+
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p><strong>Address:</strong> Unit 1203, Skynari Tower, Eton Centris, EDSA Corner Quezon Avenue, Diliman, Quezon City, Metro Manila, 1100 </p>
+        <p><strong>Headquarters:</strong> Penthouse, Trinoma Corporate Center, North Avenue cor. Mindanao Avenue, Quezon City, 1100 </p>
+        <p><strong>Phone:</strong> +63 939 805 7910 </p>
+        <p><strong>Email:</strong> <a href="mailto:support@skynari.com">support@skynari.com</a></p>
+        <p><strong>Customer Service Hours:</strong><br>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+        <div class="social-icons" aria-label="Social media links">
+          <a href="https://www.facebook.com/francis.gazah" target="_blank" aria-label="Facebook" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/lnnrdpts/" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+          </a>
+          
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send us a Message</h2>
+
+        <% if (success) { %>
+          <div class="message-success"><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+          <div class="message-error"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/contact-submit" autocomplete="off">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; Skynari Airlines. All rights reserved.
+  </footer>
+
+</body>
+</html>

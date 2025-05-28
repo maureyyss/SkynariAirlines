@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skynari Airlines</title>
+  <link rel="icon" href="/images/profile.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/images/profile.jpg" alt="Skynari Profile" />
+      Skynari Airlines
+    </div>
+    <nav>
+      <a href="/index" class="active">Home</a>
+      <a href="/flights">Flights</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <img src="/images/logo.png" alt="Skynari Logo" />
+      <h1>Fly the Heart of the Filipino</h1>
+    </div>
+    <p>Book your next adventure with Skynari Airlines</p>
+  </section>
+
+  <section class="booking-form">
+    <h2>Book a Flight</h2>
+    <form id="flightForm" method="POST" action="/book">
+      <label>
+        From:
+        <select id="from" name="from" required>
+          <option value="">-- Select Origin --</option>
+          <optgroup label="Domestic">
+            <option value="Manila">Manila</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Davao">Davao</option>
+            <option value="Clark">Clark</option>
+            <option value="Iloilo City">Iloilo City</option>
+            <option value="Caticlan">Caticlan</option>
+            <option value="Kalibo">Kalibo</option>
+            <option value="Cagayan de Oro">Cagayan de Oro</option>
+            <option value="Bacolod">Bacolod</option>
+          </optgroup>
+          <optgroup label="International">
+            <option value="Tokyo">Tokyo</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Dubai">Dubai</option>
+            <option value="London">London</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Seoul">Seoul</option>
+            <option value="Taipei">Taipei</option>
+            <option value="Osaka">Osaka</option>
+            <option value="Bangkok">Bangkok</option>
+            <option value="Kuala Lumpur">Kuala Lumpur</option>
+            <option value="Penang">Penang</option>
+            <option value="Bali">Bali</option>
+            <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+            <option value="Hanoi">Hanoi</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Perth">Perth</option>
+          </optgroup>
+        </select>
+      </label>
+
+      <label>
+        To:
+        <select id="to" name="to" required>
+          <option value="">-- Select Destination --</option>
+          <optgroup label="Domestic">
+            <option value="Manila">Manila</option>
+            <option value="Cebu">Cebu</option>
+            <option value="Davao">Davao</option>
+            <option value="Clark">Clark</option>
+            <option value="Iloilo City">Iloilo City</option>
+            <option value="Caticlan">Caticlan</option>
+            <option value="Kalibo">Kalibo</option>
+            <option value="Cagayan de Oro">Cagayan de Oro</option>
+            <option value="Bacolod">Bacolod</option>
+          </optgroup>
+          <optgroup label="International">
+            <option value="Tokyo">Tokyo</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Dubai">Dubai</option>
+            <option value="London">London</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Seoul">Seoul</option>
+            <option value="Taipei">Taipei</option>
+            <option value="Osaka">Osaka</option>
+            <option value="Bangkok">Bangkok</option>
+            <option value="Kuala Lumpur">Kuala Lumpur</option>
+            <option value="Penang">Penang</option>
+            <option value="Bali">Bali</option>
+            <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+            <option value="Hanoi">Hanoi</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Perth">Perth</option>
+          </optgroup>
+        </select>
+      </label>
+
+      <label>Departure: <input type="date" id="departure" name="departure" required></label>
+      <label>Return: <input type="date" id="return" name="return" required></label>
+
+      <h3>Passenger Information</h3>
+      <label>Adults (12+ years): <input type="number" name="adults" min="0" value="0" required></label>
+      <label>Children (2-11 years): <input type="number" name="children" min="0" value="0" required></label>
+      <label>Infants (under 2 years): <input type="number" name="infants" min="0" value="0" required></label>
+
+      <h3>Select Class</h3>
+      <div class="class-options">
+      <label><input type="radio" name="class" value="Economy" required>Economy</label>
+      <label><input type="radio" name="class" value="Premium Economy">Premium Economy</label>
+      <label><input type="radio" name="class" value="Business">Business</label>
+      <label><input type="radio" name="class" value="First Class">First Class</label>
+      </div>
+
+
+      <% if (typeof message !== 'undefined') { %>
+        <p style="color: rgb(28, 51, 184); font-weight: bold; margin: 20px;"><%= message %></p>
+      <% } %>
+
+      <button type="submit">Book Flight</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('flightForm').addEventListener('submit', function (e) {
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const departure = new Date(document.getElementById('departure').value);
+      const ret = new Date(document.getElementById('return').value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (from === to) {
+        e.preventDefault();
+        alert("Destination locations cannot be the same.");
+        return;
+      }
+
+      if (departure.toDateString() === ret.toDateString()) {
+        e.preventDefault();
+        alert("Departure and return dates cannot be the same.");
+        return;
+      }
+
+      if (departure < today || ret < today) {
+        e.preventDefault();
+        alert("You cannot book a flight for a past date.");
+        return;
+      }
+
+      if (ret < departure) {
+        e.preventDefault();
+        alert("Return date cannot be earlier than the departure date.");
+        return;
+      }
+    });
+  </script>
+
+  <footer>
+    &copy; Skynari Airlines. All rights reserved.
+  </footer>
+
+</body>
+</html>

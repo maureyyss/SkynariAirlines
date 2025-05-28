@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log in | Skynari Airlines</title>
+  <link rel="icon" href="/images/profile.jpg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, #74c2f9 0%, #e0f7ff 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: moveClouds 80s linear infinite;
+    }
+
+    .cloud:before,
+    .cloud:after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .cloud1 {
+      width: 200px;
+      height: 60px;
+      top: 20%;
+      left: -250px;
+    }
+    .cloud2 {
+      width: 150px;
+      height: 50px;
+      top: 40%;
+      left: -180px;
+      animation-delay: 20s;
+    }
+    .cloud3 {
+      width: 180px;
+      height: 55px;
+      top: 60%;
+      left: -220px;
+      animation-delay: 40s;
+    }
+
+    .cloud:before {
+      width: 80px;
+      height: 80px;
+      top: -30px;
+      left: 20px;
+    }
+
+    .cloud:after {
+      width: 100px;
+      height: 100px;
+      top: -40px;
+      left: 80px;
+    }
+
+    @keyframes moveClouds {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(200vw); }
+    }
+
+    .plane {
+      position: absolute;
+      top: 15%;
+      left: -150px;
+      font-size: 60px;
+      animation: flyPlane 25s linear infinite;
+      z-index: 2;
+    }
+
+    @keyframes flyPlane {
+      0% { transform: translateX(0) rotate(0deg); }
+      100% { transform: translateX(130vw) rotate(5deg); }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 30px;
+      border-radius: 25px;
+      width: 360px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+      z-index: 5;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #003366;
+      font-weight: 700;
+    }
+
+    form {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form input {
+      max-width: 280px;
+      width: 100%;
+      padding: 12px 14px 12px 36px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: 0.3s;
+      background-color: white;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 18px 18px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #ffcc00;
+      box-shadow: 0 0 5px #ffcc00aa;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ffcc00;
+      color: #003366;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e6b800;
+      transform: scale(1.02);
+    }
+
+    .toggle-link {
+      display: block;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      color: #003366;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    #error-msg, #success-msg {
+      text-align: center;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    #error-msg {
+      color: #cc0000;
+    }
+
+    #success-msg {
+      color: #009933;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <div class="plane">✈️</div>
+
+  <div class="container">
+    <h2 id="form-title">Login</h2>
+
+    <% if (typeof error !== 'undefined') { %>
+      <div id="error-msg"><%= error %></div>
+    <% } %>
+
+    <% if (typeof message !== 'undefined') { %>
+      <div id="success-msg"><%= message %></div>
+    <% } %>
+
+    <form class="auth-form" method="POST" action="/login" id="login-form" autocomplete="off">
+      <input type="text" name="username" placeholder="Username" autocomplete="off"
+             style="background-image: url('https://cdn-icons-png.flaticon.com/512/747/747376.png');" />
+      <input type="password" name="password" placeholder="Password" required autocomplete="off"
+             style="background-image: url('https://cdn-icons-png.flaticon.com/512/3064/3064155.png');" />
+      <button type="submit">Login</button>
+      <span class="toggle-link" onclick="toggleForms()">Create an account</span>
+    </form>
+
+    <form class="auth-form" id="register-form" method="POST" action="/register" style="display:none;" autocomplete="off">
+      <input type="text" name="username" placeholder="New Username" required autocomplete="off"
+             style="background-image: url('https://cdn-icons-png.flaticon.com/512/747/747376.png');" />
+      <input type="password" name="password" placeholder="New Password" required autocomplete="off"
+             style="background-image: url('https://cdn-icons-png.flaticon.com/512/3064/3064155.png');" />
+      <button type="submit">Create Account</button>
+      <span class="toggle-link" onclick="toggleForms()">Back to Login</span>
+    </form>
+  </div>
+
+  <script>
+    function toggleForms() {
+      const loginForm = document.getElementById("login-form");
+      const registerForm = document.getElementById("register-form");
+      const title = document.getElementById("form-title");
+
+      if (loginForm.style.display === "none") {
+        loginForm.style.display = "flex";
+        registerForm.style.display = "none";
+        title.textContent = "Login";
+      } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "flex";
+        title.textContent = "Create Account";
+      }
+    }
+
+    setTimeout(() => {
+      const error = document.getElementById('error-msg');
+      const success = document.getElementById('success-msg');
+      if (error) error.style.display = 'none';
+      if (success) success.style.display = 'none';
+    }, 3000);
+  </script>
+</body>
+</html>
